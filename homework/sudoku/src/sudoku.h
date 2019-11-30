@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <cstring>
 
@@ -71,7 +72,12 @@ public:
     }
 
     bool operator ==(const Sudoku & other) {
-        memcpy(this->grid, other.grid, 9 * 9 * sizeof(int));
+        for (int i = 0; i < 81; i++){
+            if (grid[i%3][i/3] != other.grid[i%3][i/3]){
+                return false;
+            }
+        }
+        return true;
     }
 
     int get(int i, int j) {
