@@ -41,6 +41,7 @@ private:
         }
     }
 
+
     bool numWorks(int x, int y, int num){
         for (int i = 0; i < 9; i++){
             if (grid[y][i] == num || grid[i][x] == num) return false;
