@@ -142,11 +142,13 @@ public:
     bool remove(KeyType const &key) override {
         if (count == 0) return false;
         for (int i = 0; i < capacity; i++){
+            Entry<KeyType, ValueType> *ptrNext = nullptr;
             Entry<KeyType, ValueType> *ptr = entries[i];
             if (ptr != nullptr && ptr->getKey() == key){
                 while (ptr != nullptr){
+                    ptrNext = ptr->next;
                     delete ptr;
-                    ptr = ptr->next;
+                    ptr = ptrNext;
                 }
                 entries[i] = nullptr;
                 return true;
